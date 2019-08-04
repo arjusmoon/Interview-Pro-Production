@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <title>Interview Pro - View Interviewee Profile</title>
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/pages/ui-bootstrap-page.css" rel="stylesheet">
+    <link href="assets/app-css/style.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="fix-header card-no-border fix-sidebar">
+    <div id="main-wrapper">
+      <header class="topbar">
+          <nav class="navbar top-navbar navbar-expand-md navbar-light">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/login">
+                    <b><img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" /></b>
+                    <span><h4 class="font-weight-bold d-inline-block text-danger">INTERVIEW PRO</h4></span>
+                </a>
+            </div>
+              <div class="navbar-collapse">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                    <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                  </ul>
+              </div>
+          </nav>
+      </header>
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                  <ul id="sidebarnav">
+                      <li class="user-profile">
+                          <a class="has-arrow waves-effect waves-dark" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-emoticon-cool"></i><span class="hide-menu" id="user-name"></span></a>
+                          <ul aria-expanded="false" class="collapse">
+                              <li><a href="javascript:void()">Account Setting</a></li>
+                              <li><a href="/logout">Logout</a></li>
+                          </ul>
+                      </li>
+                      <li class="nav-devider"></li>
+                      <li> <a class="waves-effect waves-dark" href="/dashboard" aria-expanded="false"><i class="mdi mdi-apps"></i><span class="hide-menu">Dashboard</span></a></li>
+                      <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu">Team</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                          <li><a href="/team/add-recruiter">Add Interviewer</a></li>
+                          <li><a href="/team/view-recruiters">View Interviewers</a></li>
+                        </ul>
+                      </li>
+                      <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Interviewee</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                          <li><a href="/interviewee/add-new">Add New</a></li>
+                          <li><a href="/interviewee/view">View All</a></li>
+                          <li><a href="/interviewee/data-sheet">Data Sheet</a></li>
+                        </ul>
+                      </li>
+                      <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-briefcase"></i><span class="hide-menu">Careers</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                          <li><a href="/careers/add-new">Add New</a></li>
+                          <li><a href="/careers/manage-careers">Manage</a></li>
+                          <li><a href="/team/add-team">Add Team</a></li>
+                        </ul>
+                      </li>
+                  </ul>
+                </nav>
+            </div>
+        </aside>
+        <div class="page-wrapper">
+            <div class="container-fluid">
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                </div>
+                <div class="col-md-7 align-self-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item">Interviewee</li>
+                        <li class="breadcrumb-item active">View Profile</li>
+                    </ol>
+                </div>
+            </div>
+
+                <div class="row">
+                    <div class="col-lg-10 col-xlg-9 col-md-7">
+                        <div class="card">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs profile-tab" role="tablist">
+                              <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#profile" role="tab">Profile</a></li>
+                              <li class="nav-item"> <a id="resume-url" target="_blank" class="nav-link" href="">View Resume</a></li>
+                              <li class="nav-item"> <a id="getResumeUrl" class="nav-link" data-trigger="manual" data-toggle="tooltip" data-placement="top" title="Copied to clipboard!" href="javascript:void(0);">Share Profile</a></li>
+                              <li class="nav-item"><a href="#" id="beat-city" class="nav-link bg-danger text-white"></a></li>
+                              <li class="ml-auto pull-right"><a href="javascript:void(0);" class="nav-link font-weight-medium" disabled>Submitted : <span id="submitted-time"></span></a></li>
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="profile" role="tabpanel">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-6 b-r"> <strong>Full Name</strong>
+                                                <br>
+                                                <p class="text-dark font-weight-medium" id="rec-full-name"></p>
+                                            </div>
+                                            <div class="col-md-3 col-xs-6 b-r"> <strong>Mobile</strong>
+                                                <br>
+                                                <p class="text-dark" id="rec-mob-num"></p>
+                                            </div>
+                                            <div class="col-md-3 col-xs-6 b-r"> <strong>Email</strong>
+                                                <br>
+                                                <p class="text-dark" id="rec-email"></p>
+                                            </div>
+                                            <div class="col-md-3 col-xs-6"> <strong>Position</strong>
+                                                <br>
+                                                <p class="text-dark" id="rec-position"></p>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <h4 class="card-title m-b-5"><span class="lstick"></span>Current Details</h4>
+                                        <div class="row">
+                                          <div class="col-md-12 m-t-10">
+                                            <h5>CTC : <span id="current_ctc"></span></h5>
+                                          </div>
+                                          <div class="col-md-12 m-t-10">
+                                            <h5>Expected CTC : <span id="expected_ctc"></span></h5>
+                                          </div>
+                                          <div class="col-md-12 m-t-20">
+                                            <h5>Position : <span id="current_position"></span></h5>
+                                          </div>
+                                          <div class="col-md-12 m-t-20">
+                                            <h5>Location : <span id="current_location"></span></h5>
+                                          </div>
+                                        </div>
+                                        <hr>
+
+                                        <h4 class="card-title m-b-5"><span class="lstick"></span>Interview Details</h4>
+                                        <div class="row">
+                                          <div class="col-md-12 m-t-10">
+                                            <h5>Interview Date : <span id="interview_date"></span></h5>
+                                          </div>
+                                          <div class="col-md-12 m-t-20">
+                                            <h5>Interview Time : <span id="interview_time"></span></h5>
+                                          </div>
+                                        </div>
+                                        <hr>
+                                        <h4 class="card-title m-b-5 m-t-20"><span class="lstick"></span>Team Details</h4>
+                                        <div class="row">
+                                          <div class="col-md-12 m-t-10">
+                                            <h5>Interviewers : <span id="recr_names"></span></h5>
+                                          </div>
+                                          <div class="col-md-12 m-t-20">
+                                            <h5>Recruiters : <span id="hr_names"></span></h5>
+                                          </div>
+                                        </div>
+                                        <hr>
+                                        <h4 class="card-title m-b-5 m-t-20"><span class="lstick"></span>Skill Set</h4>
+                                        <div class="col-md-8 list-icons" id="skill-data-section">
+                                        </div>
+                                        <hr>
+                                        <h4 class="card-title m-b-5"><span class="lstick"></span>Comments</h4>
+                                        <div class="row">
+                                          <ul id="comments-list" class="list-icons"></ul>
+                                        </div>
+                                        <hr>
+                                        <h4 class="card-title m-b-5 m-t-20"><span class="lstick"></span>Social Beat Values</h4>
+                                        <div class="row">
+                                          <ul class="list-icons" id="values-list"></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer">
+                © 2019 Interview Pro by Social Beat
+            </footer>
+        </div>
+    </div>
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="js/waves.js"></script>
+    <script src="js/sidebarmenu.js"></script>
+    <script src="assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script src="js/custom.min.js"></script>
+    <script src="assets/app-js/custom.js"></script>
+    <script src="assets/plugins/moment/moment.js"></script>
+    <script type="text/javascript">
+      var url = $(location).attr('href');
+      var parts = url.split("/");
+      var recruit_id = parts[parts.length-1];
+      var params = {id:recruit_id}
+      $.ajax('/get-recruit-data', {
+        'type': 'POST',
+        'processData': false,
+        'contentType': 'application/json',
+        'data':JSON.stringify(params)
+      }).done(function(data) {
+        console.log(data);
+        $('#getResumeUrl').attr('rel', data.recruit._id);
+        $('#resume-url').attr('href', '/recruits/view-resume/'+data.recruit._id);
+        $('#current_ctc').text(data.recruit.feedback.current_ctc);
+        $('#expected_ctc').text(data.recruit.feedback.expected_ctc);
+        $('#current_position').text(data.recruit.feedback.current_position);
+        $('#current_location').text(data.recruit.location);
+        $('#rec-full-name').text(data.recruit.name);
+        $('#beat-city').text(data.recruit.city);
+        $('#rec-mob-num').text(data.recruit.phone);
+        $('#rec-email').text(data.recruit.email);
+        $('#rec-position').text(data.recruit.position.title);
+        var int_status = data.recruit.inetrview_status;
+        var int_date = '';
+        var int_date_text = '';
+        $('#submitted-time').text(moment(data.recruit.createdAt).format('MMMM Do hh:mm A'));
+        if (int_status == '0' || int_status === undefined) {
+          int_date_text = 'Not SCheduled';
+          $('#interview_time').text(int_date_text);
+          $('#interview_date').text(int_date_text);
+        }else{
+          int_date = data.recruit.inetrview_date;
+          int_date_text = moment(int_date).format('MMMM Do');
+          int_start_time = data.recruit.interview_start_time;
+          int_start_time = int_date+'T'+int_start_time+':00+05:30';
+          int_start_time_text = moment(int_start_time).format('hh:mm A');
+          int_end_time = data.recruit.interview_end_time;
+          int_end_time = int_date+'T'+int_end_time+':00+05:30';
+          int_end_time_text = moment(int_end_time).format('hh:mm A');
+          $('#interview_date').text(int_date_text);
+          $('#interview_time').text(int_start_time_text+' to '+int_end_time_text);
+        }
+        var recruiters = [];
+        var hr = [];
+        if (data.recruit.recruiters.length === 0) {
+          $('#recr_names').text('Interviewer Not Assigned!');
+        }else{
+          for (var i = 0; i < data.recruit.recruiters.length; i++) {
+            recruiters.push(data.recruit.recruiters[i].name);
+          }
+          $('#recr_names').text(recruiters.join());
+        }
+        if (data.recruit.hr.length === 0) {
+          $('#hr_names').text('Recruiter Not Assigned!');
+        }else{
+          for (var j = 0; j < data.recruit.hr.length; j++) {
+            hr.push(data.recruit.hr[j].name);
+          }
+          $('#hr_names').text(hr.join());
+        }
+        for (var i = 0; i < data.recruit.feedback.skill_set.length; i++) {
+          var skill_title = data.recruit.feedback.skill_set[i].skill_title.name;
+          var skill_score = data.recruit.feedback.skill_set[i].skill_score;
+          skill_score = skill_score * 10;
+          var skill_color = '';
+          if (skill_score <= 30) {
+            skill_color = 'bg-danger';
+          }
+          if (skill_score >= 30 && skill_score <= 70) {
+            skill_color = 'bg-warning';
+          }
+          if (skill_score >= 70 && skill_score <= 100) {
+            skill_color = 'bg-success';
+          }
+          $('#skill-data-section').append('<h5 class="m-t-30">'+skill_title+' <span class="pull-right">'+skill_score+'%</span></h5><div class="progress"><div class="progress-bar '+skill_color+'" role="progressbar" aria-valuenow="'+skill_score+'" aria-valuemin="0" aria-valuemax="100" style="width:'+skill_score+'%; height:6px;"> <span class="sr-only">'+skill_score+'% Strength</span></div></div>');
+        }
+        for (var j = 0; j < data.recruit.feedback.comments.length; j++) {
+          $('#comments-list').append('<li class="m-b-10"><i class="ti-angle-right"></i> '+data.recruit.feedback.comments[j]+'</li>');
+        }
+        for (var k = 0; k < data.recruit.feedback.sb_values.length; k++) {
+          $('#values-list').append('<li class="m-b-10"><i class="ti-angle-right"></i> '+data.recruit.feedback.sb_values[k].value_title+' : '+data.recruit.feedback.sb_values[k].value_score+'</li>');
+        }
+      }).fail(function(err) {
+        console.log(err);
+      })
+
+      $('#getResumeUrl').click(function(event) {
+        event.preventDefault();
+        var url = window.location.href;
+        var dummy = document.createElement("textarea");
+        document.body.appendChild(dummy);
+        dummy.value = url;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+        $('#getResumeUrl').tooltip('show');
+      });
+    </script>
+</body>
+</html>

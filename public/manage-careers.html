@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <!-- Favicon icon -->
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+  <title>Interview Pro - Manage Careers</title>
+  <!-- Bootstrap Core CSS -->
+  <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/plugins/summernote/dist/summernote-bs4.css" rel="stylesheet" />
+  <link href="assets/plugins/switchery/dist/switchery.min.css" rel="stylesheet" />
+  <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+  <link href="assets/plugins/toast-master/css/jquery.toast.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="css/style.css" rel="stylesheet">
+  <link href="assets/app-css/style.css" rel="stylesheet">
+  <!-- page css -->
+  <link href="css/pages/card-page.css" rel="stylesheet">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="fix-header fix-sidebar card-no-border">
+  <div id="main-wrapper">
+    <header class="topbar">
+        <nav class="navbar top-navbar navbar-expand-md navbar-light">
+          <div class="navbar-header">
+              <a class="navbar-brand" href="/login">
+                  <b><img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" /></b>
+                  <span><h4 class="font-weight-bold d-inline-block text-danger">INTERVIEW PRO</h4></span>
+              </a>
+          </div>
+            <div class="navbar-collapse">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                  <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <aside class="left-sidebar">
+      <div class="scroll-sidebar">
+        <nav class="sidebar-nav">
+          <ul id="sidebarnav">
+            <li class="user-profile">
+              <a class="has-arrow waves-effect waves-dark" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-emoticon-cool"></i><span class="hide-menu" id="user-name"></span></a>
+              <ul aria-expanded="false" class="collapse">
+                <li><a href="javascript:void()">Account Setting</a></li>
+                <li><a href="/logout">Logout</a></li>
+              </ul>
+            </li>
+            <li class="nav-devider"></li>
+            <li> <a class="waves-effect waves-dark" href="/dashboard" aria-expanded="false"><i class="mdi mdi-apps"></i><span class="hide-menu">Dashboard</span></a></li>
+            <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu">Team</span></a>
+              <ul aria-expanded="false" class="collapse">
+                <li><a href="/team/add-recruiter">Add Interviewer</a></li>
+                <li><a href="/team/view-recruiters">View Interviewers</a></li>
+              </ul>
+            </li>
+            <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Interviewee</span></a>
+              <ul aria-expanded="false" class="collapse">
+                <li><a href="/interviewee/add-new">Add New</a></li>
+                <li><a href="/interviewee/view">View All</a></li>
+                <li><a href="/interviewee/data-sheet">Data Sheet</a></li>
+              </ul>
+            </li>
+            <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-briefcase"></i><span class="hide-menu">Careers</span></a>
+              <ul aria-expanded="false" class="collapse">
+                <li><a href="/careers/add-new">Add New</a></li>
+                <li><a href="/careers/manage-careers">Manage</a></li>
+                <li><a href="/team/add-team">Add Team</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </aside>
+    <div class="page-wrapper">
+      <div class="container-fluid">
+        <div class="row page-titles">
+          <div class="col-md-5 align-self-center">
+          </div>
+          <div class="col-md-7 align-self-center">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+              <li class="breadcrumb-item">Careers</li>
+              <li class="breadcrumb-item active">Manage Careers</li>
+            </ol>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 m-t-30">
+            <div class="card-columns" id="career-cards-section"></div>
+          </div>
+        </div>
+        <div class="right-sidebar" id="edit-careers-panel">
+          <div class="slimscrollright">
+            <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+            <div class="r-panel-body">
+              <form action="">
+                <div class="row">
+                  <div class="col-md-6">
+                    <label class="m-t-20">Title</label>
+                    <input type="text" class="form-control" placeholder="Position" id="position-title" value="">
+                  </div>
+                  <div class="col-md-6">
+                    <label class="m-t-20">Url</label>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="URL Chennai" id="position-chennai-url" value="">
+                      </div>
+                      <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="URL Bangalore" id="position-bangalore-url" value="">
+                      </div>
+                      <div class="col-md-12">
+                        <input type="text" class="form-control" placeholder="URL Mumbai" id="position-mumbai-url" value="">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6 m-t-20">
+                    <label for="">Description</label>
+                    <div class="summernote">
+                    </div>
+                  </div>
+                  <div class="col-md-6 m-t-20">
+                    <label for="">Excerpt</label>
+                    <textarea class="form-control" placeholder="Short Description" rows="10" name="excerpt" id="career-excerpt"></textarea>
+                  </div>
+                  <div class="col-md-6 m-t-20">
+                    <input type="hidden" name="" id="career_id" value="">
+                    <input type="submit" name="" id="update-careers-btn" value="Update" class="btn btn-success">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="footer">
+        © 2019 Interview Pro by Social Beat
+      </footer>
+    </div>
+  </div>
+  <script src="assets/plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap tether Core JavaScript -->
+  <script src="assets/plugins/bootstrap/js/popper.min.js"></script>
+  <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+  <!-- slimscrollbar scrollbar JavaScript -->
+  <script src="assets/plugins/switchery/dist/switchery.min.js"></script>
+  <script src="js/perfect-scrollbar.jquery.min.js"></script>
+  <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
+  <!--Wave Effects -->
+  <script src="js/waves.js"></script>
+  <!--Menu sidebar -->
+  <script src="js/sidebarmenu.js"></script>
+  <!--stickey kit -->
+  <script src="assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+  <script src="assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+  <!--Custom JavaScript -->
+  <script src="js/custom.min.js"></script>
+  <script src="assets/plugins/toast-master/js/jquery.toast.js"></script>
+  <script src="assets/app-js/custom.js" charset="utf-8"></script>
+  <script src="assets/plugins/summernote/dist/summernote-bs4.min.js"></script>
+  <script src="js/toastr.js"></script>
+
+  <script type="text/javascript">
+    var FunctionObject = {
+      getCareerCards: function() {
+        $('#career-cards-section').empty();
+        var url = '/careers/get-all';
+        $.ajax(url, {
+          'type': 'GET',
+          'processData': false,
+          'contentType': 'application/json'
+        }).done(function(data) {
+          console.log(data);
+          for (var i = 0; i < data.careers.length; i++) {
+            if(data.careers[i].career_question == undefined){
+              var qn_filled_clr = "text-danger";
+            }else{
+              var qn_filled_clr = "text-success";
+            }
+            if (data.careers[i].recruiters.length > 0) {
+              var rec_fill_clr = "text-success";
+            }else if(data.careers[i].recruiters.length === 0){
+              var rec_fill_clr = "text-danger";
+            }
+            if (data.careers[i].career_location.length > 0) {
+              var loc_fill_clr = "text-success";
+            }else if(data.careers[i].career_location.length === 0){
+              var loc_fill_clr = "text-danger";
+            }
+            var title = data.careers[i].title.replace(/\w\S*/g, function(txt) {
+              return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+            })
+            var status = data.careers[i].status;
+            var checked = "";
+            if (status == "1") {
+              var checked = 'checked';
+            }
+            if (data.careers[i].career_location.length > 0) {
+              var career_location = data.careers[i].career_location.join().toUpperCase();
+            }else{
+              var career_location = "Location Not Assigned";
+            }
+            var html = '<div class="card p-3 align-self-center position-relative"> <input data-size="small" type="checkbox" ' + checked + ' rel="' + data.careers[i]._id +
+              '" class="js-switch d-inline-block" data-color="#1e7e34" data-secondary-color="#f62d51"/> <p class="d-inline-block"><strong>' + title + '</strong></p><div class="edit-button"><a class="'+qn_filled_clr+'" href="/career/assign-question/'+data.careers[i]._id+'"><i class="far '+qn_filled_clr+' fa-question-circle"></i></a><a rel="' +
+              data.careers[i]._id + '" class="assign-team '+rec_fill_clr+' text-info" href="/career/assign-team/' + data.careers[i]._id + '"><i class="fas '+rec_fill_clr+' fa-user-plus"></i></a><a class="text-info '+loc_fill_clr+' assign-location" href="/career/assign-location/'+data.careers[i]._id+'"><i class="fas '+loc_fill_clr+' fa-map-marker-alt"></i></a><a rel="' + data.careers[i]._id +
+              '" href="javascript:void(0);" class="edit-careers text-info"><i class="far fa-edit"></i></a><a class="text-info" target="_blank" href="/careers/apply/'+data.careers[i].career_location[0]+'/' + data.careers[i].team + '/' + data.careers[i].custom_url + '"><i class="fas fa-eye"></i></a></div><div class="career-location-div"><p>'+career_location+'</p></div></div>';
+            $('#career-cards-section').append(html);
+          }
+          $('.js-switch').each(function() {
+            new Switchery($(this)[0], $(this).data());
+          });
+        }).fail(function(err) {
+          console.log(err);
+        });
+      }
+    }
+    $(document).ready(function() {
+      FunctionObject.getCareerCards();
+    });
+    $('#update-careers-btn').click(function(event) {
+      event.preventDefault();
+      var id = $('#career_id').val();
+      var title = $('#position-title').val();
+      var custom_url = $('#position-url').val();
+      var description = $('.summernote').summernote('code');
+      var excerpt = $('#career-excerpt').val();
+      var url = '/update-careers';
+      var chennai_url = $('#position-chennai-url').val();
+      var bangalore_url = $('#position-bangalore-url').val();
+      var mumbai_url = $('#position-mumbai-url').val();
+      params = {
+        id: id,
+        title: title,
+        chennai_url: chennai_url,
+        bangalore_url:bangalore_url,
+        mumbai_url:mumbai_url,
+        description: description,
+        excerpt: excerpt
+      }
+      $.ajax(url, {
+        'data': JSON.stringify(params),
+        'type': 'POST',
+        'processData': false,
+        'contentType': 'application/json'
+      }).done(function() {
+        $.toast({
+          heading: 'Career Updated',
+          text: '',
+          position: 'top-right',
+          loaderBg: '#ff6849',
+          icon: 'success',
+          hideAfter: 3000,
+          stack: 6
+        });
+        FunctionObject.getCareerCards();
+      }).fail(function(err) {
+        $.toast({
+          heading: 'Career Updation Failed',
+          text: '',
+          position: 'top-right',
+          loaderBg: '#ff6849',
+          icon: 'error',
+          hideAfter: 3000,
+          stack: 6
+        });
+      });
+    });
+
+    $(document).on('change', '.js-switch', function(event) {
+      event.preventDefault();
+      var id = $(this).attr('rel');
+      if ($(this).is(":checked")) {
+        var status = "1";
+      } else {
+        var status = "0";
+      }
+      var url = '/careers/manage-careers';
+      params = {
+        status: status,
+        id: id
+      }
+      $.ajax(url, {
+        'data': JSON.stringify(params),
+        'type': 'POST',
+        'processData': false,
+        'contentType': 'application/json'
+      }).done(function(data) {
+        var title = data.title.replace(/\w\S*/g, function(txt) {
+          return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        })
+        $.toast({
+          heading: title + ' - Status Updated',
+          text: '',
+          position: 'top-right',
+          loaderBg: '#ff6849',
+          icon: 'info',
+          hideAfter: 3000,
+          stack: 6
+        });
+      }).fail(function(err) {
+        $.toast({
+          heading: data.title + ' - Status Updation Failed',
+          text: '',
+          position: 'top-right',
+          loaderBg: '#ff6849',
+          icon: 'error',
+          hideAfter: 3000,
+          stack: 6
+        });
+      });
+    });
+
+    $(document).on('click', '.edit-careers', function(event) {
+      event.preventDefault();
+      var id = $(this).attr('rel');
+      var url = '/get-career';
+      var params = {
+        id: id
+      };
+      $.ajax(url, {
+        'data': JSON.stringify(params),
+        'type': 'POST',
+        'processData': false,
+        'contentType': 'application/json'
+      }).done(function(data) {
+        $('#career_id').val(data.career._id);
+        $('#position-title').val(data.career.title);
+        $('#position-chennai-url').val(data.career.custom_url[0].chennai);
+        $('#position-bangalore-url').val(data.career.custom_url[0].bangalore);
+        $('#position-mumbai-url').val(data.career.custom_url[0].mumbai);
+        $('.team-select').val(data.career.team);
+        $('.summernote').empty();
+        $('.summernote').append(data.career.description);
+        $('.summernote').summernote({
+          height: 200, // set editor height
+          minHeight: 200, // set minimum height of editor
+          maxHeight: null, // set maximum height of editor
+          focus: false // set focus to editable area after initializing summernote
+        });
+        $('#career-excerpt').val(data.career.excerpt);
+      }).fail(function(err) {
+        console.log(err);
+      });
+
+      $(".right-sidebar").toggleClass("shw-rside");
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <title>Interview Pro - View Interviewers</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="assets/app-css/style.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="fix-header card-no-border fix-sidebar">
+    <div id="main-wrapper">
+      <header class="topbar">
+          <nav class="navbar top-navbar navbar-expand-md navbar-light">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/login">
+                    <b><img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" /></b>
+                    <span><h4 class="font-weight-bold d-inline-block text-danger">INTERVIEW PRO</h4></span>
+                </a>
+            </div>
+              <div class="navbar-collapse">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                    <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                  </ul>
+              </div>
+          </nav>
+      </header>
+        <aside class="left-sidebar">
+            <div class="scroll-sidebar">
+                <nav class="sidebar-nav">
+                  <ul id="sidebarnav">
+                      <li class="user-profile">
+                          <a class="has-arrow waves-effect waves-dark" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-emoticon-cool"></i><span class="hide-menu" id="user-name"></span></a>
+                          <ul aria-expanded="false" class="collapse">
+                              <li><a href="javascript:void()">Account Setting</a></li>
+                              <li><a href="/logout">Logout</a></li>
+                          </ul>
+                      </li>
+                      <li class="nav-devider"></li>
+                      <li> <a class="waves-effect waves-dark" href="/dashboard" aria-expanded="false"><i class="mdi mdi-apps"></i><span class="hide-menu">Dashboard</span></a></li>
+                      <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu">Team</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                          <li><a href="/team/add-recruiter">Add Interviewer</a></li>
+                          <li><a href="/team/view-recruiters">View Interviewers</a></li>
+                        </ul>
+                      </li>
+                      <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Interviewee</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                          <li><a href="/interviewee/add-new">Add New</a></li>
+                          <li><a href="/interviewee/view">View All</a></li>
+                          <li><a href="/interviewee/data-sheet">Data Sheet</a></li>
+                        </ul>
+                      </li>
+                      <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-briefcase"></i><span class="hide-menu">Careers</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                          <li><a href="/careers/add-new">Add New</a></li>
+                          <li><a href="/careers/manage-careers">Manage</a></li>
+                          <li><a href="/team/add-team">Add Team</a></li>
+                        </ul>
+                      </li>
+                  </ul>
+                </nav>
+            </div>
+        </aside>
+        <div class="page-wrapper">
+            <div class="container-fluid">
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                </div>
+                <div class="col-md-7 align-self-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item">Team</li>
+                        <li class="breadcrumb-item active">View Interviewers</li>
+                    </ol>
+                </div>
+            </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Interviewers</h4>
+                                <div class="table-responsive">
+                                    <table class="table color-table info-table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Team</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="recruiters-table">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer"> © 2019 Interview Pro by Social Beat </footer>
+        </div>
+    </div>
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="js/perfect-scrollbar.jquery.min.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script src="assets/app-js/custom.js" charset="utf-8"></script>
+    <!--Custom JavaScript -->
+    <script src="js/custom.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        var url = '/get-recruiters';
+        $.ajax( url, {
+        'type': 'GET',
+        'processData': false,
+        'contentType': 'application/json'
+        }).done(function(data) {
+          var sn = 1;
+          for (var i = 0; i < data.recruiters.length; i++) {
+            var email = data.recruiters[i].email;
+            var name = data.recruiters[i].name;
+            name = name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})
+            var team = data.recruiters[i].team;
+            team = team.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})
+            var status = data.recruiters[i].status;
+            if (status == 'inactive') {
+              var badgecolor = 'badge-danger';
+            }else if (status == 'active') {
+              var badgecolor = 'badge-success';
+            }
+            status = status.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})
+            var tablerow = '<tr><td>'+sn+'</td><td>'+name+'</td><td>'+email+'</td><td>'+team+'</td><td><span class="badge '+badgecolor+' ml-auto">'+status+'</span></td></tr>';
+            $('#recruiters-table').append(tablerow);
+            sn++;
+          }
+        }).fail(function(err) {
+          console.log(err);
+        });
+      });
+    </script>
+</body>
+</html>

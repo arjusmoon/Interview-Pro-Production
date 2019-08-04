@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <title>Interview Pro - Feedback Form</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- page CSS -->
+    <link href="assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/select2/dist/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/plugins/switchery/dist/switchery.min.css" rel="stylesheet" />
+    <link href="assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+    <link href="assets/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
+    <link href="assets/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+    <link href="assets/plugins/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="assets/app-css/style.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="card-no-border" id="feedback-page">
+    <div id="main-wrapper">
+      <div class="container">
+        <header class="topbar position-relative">
+          <nav class="navbar top-navbar navbar-expand-md navbar-light bg-white">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="/login">
+                <b><img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" /></b>
+                <span><h4 class="font-weight-bold d-inline-block text-danger">INTERVIEW PRO</h4></span>
+              </a>
+            </div>
+            <div class="navbar-collapse">
+              <ul class="navbar-nav">
+                <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+              </ul>
+            </div>
+          </nav>
+        </header>
+      </div>
+        <div class="page-wrapper">
+            <div class="container">
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title m-b-5"><span class="lstick"></span>Basic Details</h4>
+                                <h5 class="card-title m-t-10">Name : <span  id="recruit_name"></span></h5>
+                                <h5 class="card-title m-t-20">Interview Position : <span id="recruit_position"></span></h5>
+                                <h4 class="card-title m-b-5 m-t-20"><span class="lstick"></span>Current Details</h4>
+                                <div class="col-md-6 p-l-0">
+                                  <h5 class="card-title m-t-10">Position : </h5><input type="text" name="current_position" class="form-control form-inline" id="current_position" value="">
+                                  <h5 class="card-title m-t-20">CTC : </h5><input type="text" name="current_ctc" class="form-control form-inline" id="current_ctc" value="">
+                                  <h5 class="card-title m-t-20">Expected CTC : </h5><input type="text" name="expected_ctc" class="form-control form-inline" id="expected_ctc" value="">
+                                  <h4 class="card-title m-b-5 m-t-20"><span class="lstick"></span>Social Beat Values</h4>
+                                  <h5 class="card-title m-t-10">Mutual Respect : </h5><input type="text" name="mutual_respect" class="form-control form-inline" id="mutual_respect" value="">
+                                  <h5 class="card-title m-t-10">Pushing the Boundaries : </h5><input type="text" name="push_boundaries" class="form-control form-inline" id="push_boundaries" value="">
+                                  <h5 class="card-title m-t-10">One Team Attitude : </h5><input type="text" name="one-team-attitude" class="form-control form-inline" id="one-team-attitude" value="">
+                                  <h5 class="card-title m-t-10">Attention to Detail : </h5><input type="text" name="attention_to_detail" class="form-control form-inline" id="attention_to_detail" value="">
+                                  <h5 class="card-title m-t-10">Enjoying our Work : </h5><input type="text" name="enjoy-work" class="form-control form-inline" id="enjoy-work" value="">
+                                  <h5 class="card-title m-t-10">Taking Ownership : </h5><input type="text" name="taking-ownership" class="form-control form-inline" id="taking-ownership" value="">
+                                  <h5 class="card-title m-t-10">Integrity : </h5><input type="text" name="integrity" class="form-control form-inline" id="integrity" value="">
+                                  <h5 class="card-title m-t-10">Client at the centre : </h5><input type="text" name="client-at-center" class="form-control form-inline" id="client-at-center" value="">
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                              <h4 class="card-title m-b-20"><span class="lstick"></span>Interviewee Skills</h4>
+                                <div class="skill-set-rows" id="skill-set-rows">
+                                  <div class="row">
+                                    <div class="col-sm-3 nopadding">
+                                      <div class="form-group">
+                                        <select class="select2 form-control skill_select custom-select" name="skill_set_title[]" style="width: 100%; height:36px;">
+                                          <option>Select Skill</option>
+                                        </select>
+                                      </div>
+                                    </div>
+                                    <div class="col-sm-3 nopadding">
+                                      <div class="form-group">
+                                        <div class="input-group">
+                                          <input type="text" class="form-control" id="score" name="skill_set_score[]" value="" placeholder="Score">
+                                          <div class="input-group-append">
+                                            <button class="btn btn-success" type="button" onclick="addSkillSets(); getSkills();"><i class="fa fa-plus"></i></button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title m-b-20"><span class="lstick"></span>Comments</h4>
+                                <div class="row">
+                                  <div class="col-sm-6 nopadding" id="comment-set-row">
+                                    <div class="form-group">
+                                      <div class="input-group">
+                                        <textarea name="interviewee_comments[]" id="interviewee_comments" class="form-control"></textarea>
+                                        <div class="input-group-append">
+                                          <button class="btn btn-success" type="button" onclick="addComments();"><i class="fa fa-plus"></i></button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4 align-self-center">
+                                    <input type="submit" id="submit-feedback-btn" class="btn btn-success" name="submit" value="Submit Feedback">
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer"> © 2019 Interview Pro by Social Beat </footer>
+        </div>
+    </div>
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/perfect-scrollbar.jquery.min.js"></script>
+    <script src="js/waves.js"></script>
+    <script src="js/sidebarmenu.js"></script>
+    <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script src="js/custom.min.js"></script>
+    <script src="assets/plugins/select2/dist/js/select2.full.min.js" type="text/javascript"></script>
+    <script src="assets/app-js/custom.js" charset="utf-8"></script>
+    <script>
+    $(function() {
+        $(".select2").select2();
+    });
+
+    var room = 1;
+
+    function addSkillSets() {
+
+        room++;
+        var objTo = document.getElementById('skill-set-rows')
+        var divtest = document.createElement("div");
+        divtest.setAttribute("class", "form-group removeclass" + room);
+        var rdiv = 'removeclass' + room;
+        divtest.innerHTML = '<div class="row"><div class="col-sm-3 nopadding"><div class="form-group"> <select class="select2 form-control custom-select skill_select" name="skill_set_title[]" style="width: 100%; height:36px;"><option>Select Skill</option></select></div></div><div class="col-sm-3 nopadding"><div class="form-group"><div class="input-group"> <input type="text" class="form-control" id="score" name="skill_set_score[]" value="" placeholder="Score"><div class="input-group-append"> <button class="btn btn-danger" type="button" onclick="removeSkillSets(' + room + ');"> <i class="fa fa-minus"></i> </button><button class="btn btn-success" type="button" onclick="addSkillSets(); getSkills();"><i class="fa fa-plus"></i></button></div></div></div></div></div>';
+
+        objTo.appendChild(divtest);
+        $(".select2").select2();
+    }
+
+    function removeSkillSets(rid) {
+        $('.removeclass' + rid).remove();
+    }
+
+    var room2 = 1;
+
+    function addComments() {
+
+        room2++;
+        var objTo = document.getElementById('comment-set-row')
+        var divtest = document.createElement("div");
+        divtest.setAttribute("class", "form-group removeclassComments" + room2);
+        var rdiv = 'removeclassComments' + room2;
+        divtest.innerHTML = '<div class="form-group"><div class="input-group"><textarea name="interviewee_comments[]" id="interviewee_comments" class="form-control"></textarea><div class="input-group-append"><button class="btn btn-danger" type="button" onclick="removeComments(' + room2 + ');"> <i class="fa fa-minus"></i> </button> <button class="btn btn-success" type="button" onclick="addComments();"><i class="fa fa-plus"></i></button></div></div></div>';
+
+        objTo.appendChild(divtest);
+        $(".select2").select2();
+    }
+
+    function removeComments(rid) {
+        $('.removeclassComments' + rid).remove();
+    }
+
+    var url = $(location).attr('href');
+    var parts = url.split("/");
+    var url_position = parts[parts.length-1];
+    var params = {
+      id:url_position
+    }
+    $.ajax('/get-recruit-data',{
+      'data': JSON.stringify(params),
+      'type': 'POST',
+      'processData': false,
+      'contentType': 'application/json'
+    })
+    .done(function(data) {
+      $('#recruit_position').text(data.recruit.position.title);
+      $('#recruit_name').text(data.recruit.name);
+      $('#current_ctc').val(data.recruit.feedback.current_ctc);
+      if (data.recruit.feedback.current_position != undefined) {$('#current_position').val(data.recruit.feedback.current_position);}else if(data.recruit.feedback.current_position != ''){$('#current_position').val(data.recruit.feedback.current_position);}
+      if (data.recruit.feedback.expected_ctc != undefined) {$('#expected_ctc').val(data.recruit.feedback.expected_ctc);}else if(data.recruit.feedback.expected_ctc != ''){$('#expected_ctc').val(data.recruit.feedback.expected_ctc);}
+
+      if (data.recruit.feedback.expected_ctc != undefined) {$('#expected_ctc').val(data.recruit.feedback.expected_ctc);}else if(data.recruit.feedback.expected_ctc != ''){$('#expected_ctc').val(data.recruit.feedback.expected_ctc);}
+    })
+    .fail(function(err) {
+      console.log(err);
+    })
+
+    function getSkills() {
+      $.ajax('/get-skills',{
+        'type': 'GET',
+        'processData': false,
+        'contentType': 'application/json'
+      })
+      .done(function(data) {
+        for (var i = 0; i < data.skills.length; i++) {
+          $('.skill_select:last').append('<option value="'+data.skills[i]._id+'">'+data.skills[i].name+'</option>');
+        }
+      })
+      .fail(function(err) {
+        console.log(err);
+      })
+    }
+
+    getSkills();
+
+    $('#submit-feedback-btn').click(function(event) {
+      event.preventDefault();
+      var url = '/interviewee/submit-feedback';
+      var skill_title = [];
+      var skill_score = [];
+      var comments = [];
+      $('select[name="skill_set_title[]"]').each(function(){
+        skill_title.push($(this).val());
+      });
+      $('input[name="skill_set_score[]"]').each(function(){
+        skill_score.push($(this).val());
+      });
+      $('textarea[name="interviewee_comments[]"]').each(function(){
+        comments.push($(this).val());
+      });
+      skills = [];
+      for (var i = 0; i < skill_title.length; i++) {
+        skills.push({
+          skill_title: skill_title[i],
+          skill_score: skill_score[i]
+        })
+      }
+      var sb_values = [{
+        value_title: 'Mutual Respect',
+        value_score: $('#mutual_respect').val()
+      },
+      {
+        value_title: 'Pushing the Boundaries',
+        value_score: $('#push_boundaries').val()
+      },
+      {
+        value_title: 'One Team Attitude',
+        value_score: $('#one-team-attitude').val()
+      },
+      {
+        value_title: 'Attention to Detail',
+        value_score: $('#one-team-attitude').val()
+      },
+      {
+        value_title: 'Enjoying our Work',
+        value_score: $('#enjoy-work').val()
+      },
+      {
+        value_title: 'Taking Ownership',
+        value_score: $('#taking-ownership').val()
+      },
+      {
+        value_title: 'Integrity',
+        value_score: $('#integrity').val()
+      },
+      {
+        value_title: 'Client at the centre',
+        value_score: $('#client-at-center').val()
+      }];
+      var current_position = $('#current_position').val();
+      var current_ctc = $('#current_ctc').val();
+      var expected_ctc = $('#expected_ctc').val();
+      var params = {
+        id : url_position,
+        current_position: current_position,
+        current_ctc : current_ctc,
+        skills : skills,
+        comments : comments,
+        expected_ctc : expected_ctc,
+        sb_values : sb_values
+      };
+      $.ajax(url,{
+        'data': JSON.stringify(params),
+        'type': 'POST',
+        'processData': false,
+        'contentType': 'application/json'
+      })
+      .done(function(data) {
+        swal('Feedback Submitted!', '', 'success');
+        setTimeout(function () {
+          window.location.replace('/interviewee/view-profile/'+data.data._id);
+        }, 800);
+      })
+      .fail(function(err) {
+        swal('Error!', '', 'error');
+      })
+    });
+    </script>
+</body>
+
+
+</html>

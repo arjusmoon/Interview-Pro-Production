@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
+    <title>InterviewPro - Activate Account</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="../../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+    <!-- Custom CSS -->
+    <link href="../../css/style.css" rel="stylesheet">
+    <!-- page css -->
+    <link href="../../css/pages/card-page.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <link href="../../css/colors/default-dark.css" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="fix-header fix-sidebar card-no-border">
+    <div id="main-wrapper">
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <!-- ============================================================== -->
+                <!-- Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/login">
+                      <b>
+
+                            <img src="../../assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                            <img src="../../assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                        </b>
+                        <span>
+                         <img src="../../assets/images/logo-text.png" style="max-width:160px;" alt="homepage" class="dark-logo" />
+                         <img src="../../assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span> </a>
+                </div>
+            </nav>
+        </header>
+        <div class="page-wrapper" style="margin:0;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 col-md-8 ml-auto mr-auto m-t-30">
+                      <div class="card bg-primary p-3 text-center text-white">
+                          <h4 class="card-title text-white">Activate account</h4>
+                          <p>You must create a password for your account.</p>
+                      </div>
+                    </div>
+                    <div class="col-12 col-md-8 ml-auto mr-auto">
+                      <div class="card">
+                          <div class="card-body">
+                              <h4 class="card-title text-center">Create Password</h4>
+                              <form class="form-material m-t-40">
+                                <div class="row">
+                                  <div class="col-md-6 ml-auto">
+                                    <div class="form-group">
+                                      <label class="text-left">Password</label>
+                                      <input type="password" class="form-control" value="" id="recruiter-password">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-3 align-self-center mr-auto">
+                                    <button type="button" class="btn waves-effect waves-light btn-success" id="recruiter-password-submit">Submit Password</button>
+                                  </div>
+                                </div>
+                              </form>
+                          </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer">
+                 © 2019 Interview Pro by Social Beat
+            </footer>
+        </div>
+    </div>
+    <script src="../../assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="../../assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="../../assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!--Menu sidebar -->
+    <script src="../../assets/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="../../assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="../../assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script src="../../js/custom.min.js"></script>
+    <script type="text/javascript">
+      $('#recruiter-password-submit').click(function(event) {
+        event.preventDefault();
+        var password = $('#recruiter-password').val();
+        params = {
+          password : password
+        };
+        var url = '/create-recruiter-password';
+        $.ajax( url, {
+          'data': JSON.stringify(params),
+          'type': 'POST',
+          'processData': false,
+          'contentType': 'application/json'
+        }).done(function(data) {
+          swal('Profile Activated!','','success');
+          setTimeout(function () {
+          window.location.replace("/login");
+          }, 2000);
+        }).fail(function(err) {
+          console.log(err);
+        });
+      });
+    </script>
+</body>
+
+</html>

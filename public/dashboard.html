@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <title>Interview Pro</title>
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
+    <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/pages/dashboard4.css" rel="stylesheet">
+    <link href="assets/app-css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="fix-header fix-sidebar card-no-border" id="page-dashboard">
+    <div id="main-wrapper">
+      <header class="topbar">
+          <nav class="navbar top-navbar navbar-expand-md navbar-light">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/login">
+                    <b><img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" /></b>
+                    <span><h4 class="font-weight-bold d-inline-block text-danger">INTERVIEW PRO</h4></span>
+                </a>
+            </div>
+              <div class="navbar-collapse">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                    <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                  </ul>
+              </div>
+          </nav>
+      </header>
+        <aside class="left-sidebar">
+            <div class="scroll-sidebar">
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="user-profile">
+                            <a class="has-arrow waves-effect waves-dark" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-emoticon-cool"></i><span class="hide-menu" id="user-name"></span></a>
+                            <ul aria-expanded="false" class="collapse">
+                                <li><a href="javascript:void()">Account Setting</a></li>
+                                <li><a href="/logout">Logout</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-devider"></li>
+                        <li> <a class="waves-effect waves-dark" href="/dashboard" aria-expanded="false"><i class="mdi mdi-apps"></i><span class="hide-menu">Dashboard</span></a></li>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu">Team</span></a>
+                          <ul aria-expanded="false" class="collapse">
+                            <li><a href="/team/add-recruiter">Add Interviewer</a></li>
+                            <li><a href="/team/view-recruiters">View Interviewers</a></li>
+                          </ul>
+                        </li>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Interviewee</span></a>
+                          <ul aria-expanded="false" class="collapse">
+                            <li><a href="/interviewee/add-new">Add New</a></li>
+                            <li><a href="/interviewee/view">View All</a></li>
+                            <li><a href="/interviewee/data-sheet">Data Sheet</a></li>
+                          </ul>
+                        </li>
+                        <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-briefcase"></i><span class="hide-menu">Careers</span></a>
+                          <ul aria-expanded="false" class="collapse">
+                            <li><a href="/careers/add-new">Add New</a></li>
+                            <li><a href="/careers/manage-careers">Manage</a></li>
+                            <li><a href="/team/add-team">Add Team</a></li>
+                          </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <div class="page-wrapper">
+            <div class="container-fluid">
+            <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                </div>
+            </div>
+            <div class="row">
+                    <div class="col-lg-7 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                  <div>
+                                    <h4 class="card-title"><span class="lstick"></span>Upcoming Interviews</h4>
+                                  </div>
+                                  <div class="btn-group ml-auto m-t-10">
+                                      <a href="JavaScript:void(0)" class="icon-reload link" id="reloadUpEvents"></a>
+                                  </div>
+                                </div>
+                                <div class="table-responsive m-t-20">
+                                  <table class="table vm no-th-brd pro-of-month">
+                                    <thead style="display:none" id="up-events-table-head">
+                                      <tr>
+                                        <th colspan="2">Name</th>
+                                        <th>Email</th>
+                                        <th>Interview Date</th>
+                                        <th></th>
+                                      </tr>
+                                    </thead>
+                                    <tbody id="upcomingEventTable"></tbody>
+                                  </table>
+                                </div>
+                                <div class="col-6 ml-auto mr-auto" id="loader-events">
+                                  <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex">
+                                    <h4 class="card-title"><span class="lstick"></span>Recent Submissions</h4>
+                                    <div class="btn-group ml-auto m-t-10">
+                                        <a href="JavaScript:void(0)" class="icon-options-vertical link" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="activity-box">
+                                <div class="card-body" id="recent-submissions-widget-body"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-sidebar">
+                    <div class="slimscrollright">
+                        <div class="rpanel-title"> Service Panel <span><i class="ti-close right-side-toggle"></i></span> </div>
+                        <div class="r-panel-body">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer"> © 2019 Interview Pro by Social Beat </footer>
+        </div>
+    </div>
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap popper Core JavaScript -->
+    <script src="assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="js/perfect-scrollbar.jquery.min.js"></script>
+    <!--Wave Effects -->
+    <script src="assets/plugins/moment/moment.js"></script>
+    <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="js/custom.min.js"></script>
+    <script src="assets/app-js/custom.js" charset="utf-8"></script>
+    <script type="text/javascript">
+
+    var FunctionObject = {
+      updateCalendarEvents: function() {
+        var url = '/calendar/get-events';
+        $.ajax( url, {
+          'type': 'GET',
+          'processData': false,
+          'contentType': 'application/json'
+        }).done(function(data) {
+          if (data.events.length) {
+            $('#upcomingEventTable').empty();
+            $('#up-events-table-head').show();
+            for (var i = 0; i < data.events.length; i++) {
+              var title = data.events[i].title;
+              var name = data.events[i].att_name;
+              name = name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})
+              var position = data.events[i].position;
+              if (position) {
+                position = position.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})
+              }
+              var location = data.events[i].location;
+              if (location) {
+                location = location.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})
+              }
+              var email = data.events[i].attendee;
+              var c_id = data.events[i].cal_id;
+              var start = data.events[i].start;
+              var end = data.events[i].end;
+              var dateText = moment(start).format('MMMM Do YYYY');
+              var startTimeC = moment(start).format('hh:mm A');
+              var endTimeC = moment(end).format('hh:mm A');
+              var tablerow = '<tr><td style="width:50px;"><i style="font-size:28px;" class="fas fa-user-tie"></i></td><td><h6>'+name+'</h6><small class="text-muted">'+position+', '+location+'</small></td><td>'+email+'</td><td><span class="label label-success label-rounded">'+dateText+' From '+startTimeC+' to '+endTimeC+'</span></td><td><button type="button" data-email="'+email+'" data-cal-id="'+c_id+'" class="btn btn-warning btn-circle btn-sm cancel-up-event"><i class="fa fa-times"></i> </button></td></tr>';
+              $('#upcomingEventTable').append(tablerow);
+            }
+            $('#loader-events').hide();
+          }else if (data.events.length === 0) {
+            $('#upcomingEventTable').empty();
+            var tablerow = '<tr class"text-center"><td>No Upcoming events found!</td></tr>';
+            $('#upcomingEventTable').append(tablerow);
+            $('#loader-events').hide();
+          }
+        }).fail(function(err) {
+          console.log(err);
+        });
+      },
+    getRecentSubmissions:function(){
+      $.ajax( '/interviewee/get-all?limit=5&type=new', {
+        'type': 'GET',
+        'processData': false,
+        'contentType': 'application/json'
+      }).done(function(data) {
+        console.log(data);
+        for (var i = 0; i < data.recruites.length; i++) {
+          var date = data.recruites[i].createdAt;
+          var date_text = moment(date).format('MMMM Do')
+          var time = moment(date).format('hh:mm A');
+          var resume = data.recruites[i].resume;
+          var fileIcon = '';
+          if (resume.match(/\.(pdf)$/)) {
+            fileIcon = '<i class="fas fa-file-pdf"></i>';
+          }else if (resume.match(/\.(doc|docx|)$/)) {
+            fileIcon = '<i class="fas fa-file-word"></i>';
+          }
+          var html = '<div class="activity-item"><div class="round m-r-20">'+fileIcon+'</div><div class="m-t-10"><h5 class="m-b-0 font-medium"> '+data.recruites[i].name+' <span class="text-muted font-14 m-l-10">| &nbsp; '+date_text+' &nbsp; '+time+'</span></h5><h6 class="text-muted">'+data.recruites[i].position.title+' - '+data.recruites[i].city+'</h6><table class="table vm b-0 m-b-0"><tbody><tr><td class="b-0" style="padding-left:0"><h5 class="m-b-0 font-medium "><a target="_blank" href="/recruits/view-resume/'+data.recruites[i]._id+'">View Resume</a></h5></td><td class="b-0" style="padding-left:0"><h5 class="m-b-0 font-medium "><a target="_blank" href="/interviewee/view-profile/'+data.recruites[i]._id+'">View Profile</a></h5></td></tr></tbody></table></div></div>';
+          $('#recent-submissions-widget-body').append(html);
+        }
+      }).fail(function(err) {
+        console.log(err);
+      })
+    }
+    }
+    $(document).ready(function() {
+      FunctionObject.updateCalendarEvents();
+      FunctionObject.getRecentSubmissions();
+    });
+    $('#reloadUpEvents').click(function(event) {
+      event.preventDefault();
+      $('#loader-events').show();
+      FunctionObject.updateCalendarEvents();
+    });
+
+    $(document).on('click', '.cancel-up-event', function(event) {
+      event.preventDefault();
+      swal({
+          title: "Cancel Interview?",
+          text: "System will send a cancellation email to the candidate.",
+          type: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#06d79c",
+          confirmButtonText: "Yes, cancel it!",
+      }).then((value)=>{
+        if (value.value == true) {
+          var c_id = $(this).attr('data-cal-id');
+          var email = $(this).attr('data-email');
+          var params = {
+            c_id : c_id,
+            email : email
+          };
+          var url = '/calendar/delete-event';
+          $.ajax( url, {
+            'data' : JSON.stringify(params),
+            'type': 'POST',
+            'processData': false,
+            'contentType': 'application/json'
+          }).done(function() {
+            swal("Cancelled", "", "success");
+          }).fail(function(err) {
+            swal("Error!", "Error Cancelling Interview", "error");
+          });
+          FunctionObject.updateCalendarEvents();
+        }
+      });
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <title>Interview Pro - Data Sheet</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/plugins/datatables/media/css/dataTables.bootstrap4.css">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="assets/app-css/style.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="fix-header card-no-border fix-sidebar">
+      <div id="main-wrapper">
+        <header class="topbar">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+              <div class="navbar-header">
+                  <a class="navbar-brand" href="/login">
+                      <b><img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" /></b>
+                      <span><h4 class="font-weight-bold d-inline-block text-danger">INTERVIEW PRO</h4></span>
+                  </a>
+              </div>
+                <div class="navbar-collapse">
+                    <ul class="navbar-nav mr-auto">
+                      <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                      <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="left-sidebar">
+            <div class="scroll-sidebar">
+                <nav class="sidebar-nav">
+                  <ul id="sidebarnav">
+                      <li class="user-profile">
+                          <a class="has-arrow waves-effect waves-dark" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-emoticon-cool"></i><span class="hide-menu" id="user-name"></span></a>
+                          <ul aria-expanded="false" class="collapse">
+                              <li><a href="javascript:void()">Account Setting</a></li>
+                              <li><a href="/logout">Logout</a></li>
+                          </ul>
+                      </li>
+                      <li class="nav-devider"></li>
+                      <li> <a class="waves-effect waves-dark" href="/dashboard" aria-expanded="false"><i class="mdi mdi-apps"></i><span class="hide-menu">Dashboard</span></a></li>
+                      <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu">Team</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                          <li><a href="/team/add-recruiter">Add Interviewer</a></li>
+                          <li><a href="/team/view-recruiters">View Interviewers</a></li>
+                        </ul>
+                      </li>
+                      <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Interviewee</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                          <li><a href="/interviewee/add-new">Add New</a></li>
+                          <li><a href="/interviewee/view">View All</a></li>
+                          <li><a href="/interviewee/data-sheet">Data Sheet</a></li>
+                        </ul>
+                      </li>
+                      <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-briefcase"></i><span class="hide-menu">Careers</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                          <li><a href="/careers/add-new">Add New</a></li>
+                          <li><a href="/careers/manage-careers">Manage</a></li>
+                          <li><a href="/team/add-team">Add Team</a></li>
+                        </ul>
+                      </li>
+                  </ul>
+                </nav>
+            </div>
+        </aside>
+        <div class="page-wrapper">
+            <div class="container-fluid">
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                    </div>
+                    <div class="col-md-7 align-self-center">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                            <li class="breadcrumb-item">Interviewee</li>
+                            <li class="breadcrumb-item active">Data Sheet</li>
+                        </ol>
+                    </div>
+                    <!-- <div class="">
+                        <button class="right-side-toggle waves-effect filter-switch waves-light btn-inverse btn btn-circle btn-sm pull-right m-l-10"><i class="fas fa-filter text-white"></i>
+                        </button>
+                    </div> -->
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Interviewee Data Sheet</h4>
+                                <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>
+                                <div class="table-responsive m-t-40">
+                                    <table id="recruitsTable" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Phone</th>
+                                                <th>Position</th>
+                                                <th>Location</th>
+                                                <th>Experience</th>
+                                                <th>Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tfoot>
+                                          <tr>
+                                              <th>#</th>
+                                              <th>Name</th>
+                                              <th>Email</th>
+                                              <th>Phone</th>
+                                              <th>Position</th>
+                                              <th>Location</th>
+                                              <th>Experience</th>
+                                              <th>Status</th>
+                                          </tr>
+                                        </tfoot>
+                                        <tbody id="recruitsTable-body">
+
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-sidebar">
+                    <div class="slimscrollright">
+                        <div class="rpanel-title"> Filter <span><i class="ti-close right-side-toggle"></i></span> </div>
+                        <div class="r-panel-body">
+                          <div class="row form-material">
+                            <div class="col-md-6">
+                                <label class="m-t-20">Title</label>
+                                <input type="text" class="form-control" placeholder="Event Title" id="event-title" value="Social Beat - Interview">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="m-t-20">Description</label>
+                                <input type="text" class="form-control" id="event-desc" value="Schedule for your interview at Social Beat" placeholder="Schedule for your interview at Social Beat">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="m-t-20">Location</label>
+                                <input type="text" class="form-control" id="event-location" placeholder="Event Location" value="3rd floor, Samson Towers, 403, Pantheon Rd, Sulaiman Zackria Avenue, Egmore, Chennai, Tamil Nadu 600008">
+                            </div>
+                              <button type="submit" class="btn btn-success waves-effect waves-light m-r-10 m-t-50" id="schedule-interview-side-btn">Schedule</button>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer"> © 2019 Interview Pro by Social Beat </footer>
+            </div>
+        </div>
+    </div>
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="js/perfect-scrollbar.jquery.min.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="js/custom.min.js"></script>
+    <script src="assets/app-js/custom.js"></script>
+    <!-- This is data table -->
+    <script src="assets/plugins/datatables/datatables.min.js"></script>
+    <!-- start - This is for export functionality only -->
+    <script src="assets/datatables/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script src="assets/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <script src="assets/datatables/cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script src="assets/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="assets/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script src="assets/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <script src="assets/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+    <!-- end - This is for export functionality only -->
+    <script>
+      $(document).ready(function() {
+        var functionObject = {
+          updateRecruitsDataSheet : function () {
+            $.ajax('/interviewee/get-all',{
+              'type': 'GET',
+              'processData': false,
+              'contentType': 'application/json'
+            })
+            .done(function(data) {
+              console.log(data);
+              for (var i = 0; i < data.recruites.length; i++) {
+                var app_no = data.recruites[i].application_no;
+                var name = data.recruites[i].name;
+                var email = data.recruites[i].email;
+                var phone = data.recruites[i].phone;
+                var position = data.recruites[i].position.title;
+                var location = data.recruites[i].location;
+                var experience = data.recruites[i].experience;
+                var status = data.recruites[i].status;
+                var html = '<tr><td>'+app_no+'</td><td>'+name+'</td><td>'+email+'</td><td>'+phone+'</td><td>'+position+'</td><td>'+location+'</td><td>'+experience+'</td><td>'+status+'</td></tr>';
+                $('#recruitsTable-body').append(html);
+              }
+              $('#recruitsTable').DataTable({
+                  dom: 'Bfrtip',
+                  buttons: [
+                      'copy', 'csv', 'excel', 'pdf', 'print'
+                  ]
+              });
+              $('.buttons-copy, .buttons-csv, .buttons-print, .buttons-pdf, .buttons-excel').addClass('btn btn-primary mr-1');
+            })
+            .fail(function(err) {
+              console.log(err);
+            })
+          },
+        getPositions : function () {
+          var url = '/careers/get-all';
+          $.ajax( url, {
+            'type': 'GET',
+            'processData': false,
+            'contentType': 'application/json'
+          }).done(function(data) {
+            for (var i = 0; i < data.careers.length; i++) {
+              var title = data.careers[i].title;
+              var id = data.careers[i]._id;
+              $('.r-panel-body').append('<option value="'+id+'">'+title+'</option>');
+            }
+          }).fail(function(err){
+            console.log(err);
+          });
+        }
+      }
+      functionObject.updateRecruitsDataSheet();
+      $('.filter-switch').click(function(event) {
+        functionObject.getPositions();
+      });
+      });
+    </script>
+</body>
+
+
+</html>

@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <title>Interview Pro - View Recruiters</title>
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
+    <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+    <link href="assets/plugins/clockpicker/dist/jquery-clockpicker.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="assets/app-css/style.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="fix-header card-no-border fix-sidebar" id="view-recruits-page">
+  <div class="preloader" style="display:none;">
+      <div class="loader">
+          <div class="loader__figure"></div>
+          <p class="loader__label">Please wait, Assigning Recruiter</p>
+      </div>
+  </div>
+    <div id="main-wrapper">
+      <header class="topbar">
+          <nav class="navbar top-navbar navbar-expand-md navbar-light">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/login">
+                    <b><img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" /></b>
+                    <span><h4 class="font-weight-bold d-inline-block text-danger">INTERVIEW PRO</h4></span>
+                </a>
+            </div>
+              <div class="navbar-collapse">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                    <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                  </ul>
+              </div>
+          </nav>
+      </header>
+        <aside class="left-sidebar">
+            <div class="scroll-sidebar">
+                <nav class="sidebar-nav">
+                  <ul id="sidebarnav">
+                      <li class="user-profile">
+                          <a class="has-arrow waves-effect waves-dark" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-emoticon-cool"></i><span class="hide-menu" id="user-name"></span></a>
+                          <ul aria-expanded="false" class="collapse">
+                              <li><a href="javascript:void()">Account Setting</a></li>
+                              <li><a href="/logout">Logout</a></li>
+                          </ul>
+                      </li>
+                      <li class="nav-devider"></li>
+                      <li> <a class="waves-effect waves-dark" href="/dashboard" aria-expanded="false"><i class="mdi mdi-apps"></i><span class="hide-menu">Dashboard</span></a></li>
+                      <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu">Team</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                          <li><a href="/team/add-recruiter">Add Interviewer</a></li>
+                          <li><a href="/team/view-recruiters">View Interviewers</a></li>
+                        </ul>
+                      </li>
+                      <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Interviewee</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                          <li><a href="/interviewee/add-new">Add New</a></li>
+                          <li><a href="/interviewee/view">View All</a></li>
+                          <li><a href="/interviewee/data-sheet">Data Sheet</a></li>
+                        </ul>
+                      </li>
+                      <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-briefcase"></i><span class="hide-menu">Careers</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                          <li><a href="/careers/add-new">Add New</a></li>
+                          <li><a href="/careers/manage-careers">Manage</a></li>
+                          <li><a href="/team/add-team">Add Team</a></li>
+                        </ul>
+                      </li>
+                  </ul>
+                </nav>
+            </div>
+        </aside>
+        <div class="page-wrapper">
+            <div class="container-fluid">
+                <div class="row page-titles">
+                  <div class="col-md-5 align-self-center">
+                  </div>
+                  <div class="col-md-7 align-self-center">
+                      <ol class="breadcrumb">
+                          <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                          <li class="breadcrumb-item">Team</li>
+                          <li class="breadcrumb-item active">View Interviewees</li>
+                      </ol>
+                  </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">All Interviewees</h4>
+                                <div class="table-responsive">
+                                    <table class="table color-table info-table">
+                                      <thead>
+                                        <tr>
+                                          <th>#</th>
+                                          <th>Name</th>
+                                          <th>Email</th>
+                                          <th>Phone</th>
+                                          <th>Team - Position</th>
+                                          <th class="text-center">Recruiter</th>
+                                          <th>Status</th>
+                                          <th></th>
+                                        </tr>
+                                      </thead>
+                                      <tbody id="recruites-table">
+                                      </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-sidebar">
+                    <div class="slimscrollright">
+                        <div class="rpanel-title">Schedule Interview Panel<span><i class="ti-close right-side-toggle" id="schedule-panel-close-btn"></i></span> </div>
+                        <div class="r-panel-body">
+                          <div class="row form-material">
+                            <div class="col-md-6">
+                                <label class="m-t-20">Title</label>
+                                <input type="text" class="form-control" placeholder="Event Title" id="event-title" value="Social Beat - Interview">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="m-t-20">Description</label>
+                                <input type="text" class="form-control" id="event-desc" value="Schedule for your interview at Social Beat" placeholder="Schedule for your interview at Social Beat">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="m-t-20">Location</label>
+                                <input type="text" class="form-control" id="event-location" placeholder="Event Location" value="3rd floor, Samson Towers, 403, Pantheon Rd, Sulaiman Zackria Avenue, Egmore, Chennai, Tamil Nadu 600008">
+                            </div>
+                              <div class="col-md-6">
+                                  <label class="m-t-20">Date</label>
+                                  <input type="text" class="form-control" placeholder="Interview Date" id="int-date">
+                              </div>
+                              <div class="col-md-6">
+                                  <label class="m-t-20">Start Time</label>
+                                  <input class="form-control" id="int-start-time" placeholder="Interview starting time">
+                              </div>
+                              <div class="col-md-6">
+                                  <label class="m-t-20">End Time</label>
+                                  <input class="form-control" id="int-end-time" placeholder="Interview ending time">
+                              </div>
+                              <div class="col-md-6">
+                                <input type="hidden" id="schedule-recruit-id">
+                                <input type="hidden" id="schedule-recruit-email">
+                                <input type="hidden" id="schedule-recruiter-id">
+                                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10 m-t-50" id="schedule-interview-side-btn">Schedule</button>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-sidebar2">
+                  <div class="slimscrollright">
+                    <div class="rpanel-title">Assign Team Members Panel<span><i class="ti-close right-side-toggles close-rec-panel"></i></span> </div>
+                    <div class="r-panel-body">
+                      <div class="row" id="recruiters_select_fields">
+                          <div class="col-sm-6 recruiters-form-group nopadding">
+                              <div class="form-group">
+                                <h5 class="font-weight-bold m-b-20">Interviewers</h5>
+                                  <div class="input-group">
+                                    <div class="demo-checkbox recruiters-check"></div>
+                                  </div>
+                                <h5 class="font-weight-bold m-b-20">Recruiters</h5>
+                                  <div class="input-group">
+                                    <div class="demo-checkbox hr-check"></div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row form-material">
+                        <div class="col-md-6">
+                          <input type="hidden" id="recruiter-assign-recruit-id" value="">
+                          <button type="submit" class="btn btn-success waves-effect waves-light" id="assigner-recruiter-btn">Submit</button>
+                        </div>
+                      </div>
+
+                      <div class="row m-t-30">
+                        <div class="col-md-12">
+                          <p>Select Recruiter to send the Interviewee profile.</p>
+                        </div>
+                        <div class="col-md-6" id="recruiters_radio_fields">
+
+                        </div>
+                        <div class="col-md-6">
+                          <button type="submit" class="btn btn-info waves-effect waves-light" id="send-profile-email-btn">Send Email</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <footer class="footer"> © 2019 Interview Pro by Social Beat </footer>
+            </div>
+        </div>
+
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plugins/moment/moment.js"></script>
+    <script src="assets/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <!-- Clock Plugin JavaScript -->
+    <script src="assets/plugins/clockpicker/dist/jquery-clockpicker.min.js"></script>
+    <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="js/perfect-scrollbar.jquery.min.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <script src="assets/app-js/custom.js" charset="utf-8"></script>
+    <!--Custom JavaScript -->
+    <script src="js/custom.min.js"></script>
+    <script src="assets/plugins/dff/dff.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      $('#int-date').bootstrapMaterialDatePicker({ weekStart: 0, time: false });
+      $('#int-start-time').bootstrapMaterialDatePicker({ format: 'HH:mm', time: true, date: false });
+      $('#int-end-time').bootstrapMaterialDatePicker({ format: 'HH:mm', time: true, date: false });
+      function getRecruiters() {
+        var url = '/get-recruiters';
+        $.ajax( url, {
+        'type': 'GET',
+        'processData': false,
+        'contentType': 'application/json'
+        }).done(function(data) {
+          for (var i = 0; i < data.recruiters.length; i++) {
+            var id = data.recruiters[i]._id;
+            var name = data.recruiters[i].name;
+            name = name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})
+            $('.recruiters-form-group:last-child').find('.recruiters-select').append('<option value="'+id+'">'+name+'</option>');
+          }
+        }).fail(function(err) {
+          console.log(err);
+        });
+      }
+      $(document).ready(function() {
+        updateTable()
+      });
+      $(document).on('click', '.schedule-interview-btn', function(event) {
+        event.preventDefault();
+        if ($(this).attr('data-recruiter-stat') == '0') {
+          return swal("Warning!", "Assign a recruiter to schedule an interview", "warning");
+        }
+        var id = $(this).attr("rel");
+        var recruit_email = $(this).attr("data-email");
+        $('#schedule-recruit-id').val(id);
+        $('#schedule-recruit-email').val(recruit_email);
+        $(".right-sidebar").slideDown(50), $(".right-sidebar").toggleClass("shw-rside");
+      });
+      $(document).on('click', '.assign-recruiter-btn', function(event) {
+        event.preventDefault();
+        var id = $(this).attr("rel");
+        var career = $(this).attr("data-career-id");
+        $('#recruiter-assign-recruit-id').val(id);
+        $('.right-sidebar2').css('width','50%').show();
+        var url = '/get-career-team';
+        var params = {
+          id : id,
+          career :career
+        }
+        $.ajax( url, {
+        'type': 'POST',
+        'data' : JSON.stringify(params),
+        'processData': false,
+        'contentType': 'application/json'
+        }).done(function(data) {
+          var hr = data.career.hr;
+          var recruiter = data.career.recruiters;
+          $('.recruiters-check').empty();
+          var selected_ids = [];
+          for (var k = 0; k < data.selected.length; k++) {
+            for (var l = 0; l < data.selected[k].recruiters_sel.length; l++) {
+              selected_ids.push(data.selected[k].recruiters_sel[l])
+            }
+            for (var m = 0; m < data.selected[k].hr_sel.length; m++) {
+              selected_ids.push(data.selected[k].hr_sel[m])
+            }
+          }
+          if (recruiter.length === 0) {
+            $('.recruiters-check').append('<p>Interviewers are not assigned to this career</p>')
+          }
+          $('#recruiters_radio_fields').empty();
+          for (var i = 0; i < recruiter.length; i++) {
+            var rec_name = recruiter[i].name;
+            var rec_id = recruiter[i]._id;
+            var rec_checked = '';
+            if (selected_ids.includes(rec_id)) {
+              rec_checked = 'checked';
+            }
+            $('.recruiters-check').append('<input '+rec_checked+' name="recruiters[]" type="checkbox" value="'+rec_id+'" id="'+rec_id+'" class="filled-in recruiters-check-box chk-col-red"> <label for="'+rec_id+'">'+rec_name+'</label>');
+            $('#recruiters_radio_fields').append('<input name="recruiter-radio-select" value="'+rec_id+'" type="radio" id="recruiter-radio-select'+i+'" class="with-gap radio-col-red"/> <label for="recruiter-radio-select'+i+'">'+rec_name+'</label>');
+          }
+          $('.hr-check').empty();
+          if (hr.length === 0) {
+            $('.hr-check').append('<p>Recruiters are not assigned to this career</p>')
+          }else{
+            for (var j = 0; j < hr.length; j++) {
+              var hr_name = hr[j].name;
+              var hr_id = hr[j]._id;
+              var checked = '';
+              if (selected_ids.includes(hr_id)) {
+                checked = 'checked';
+              }
+              $('.hr-check').append('<input name="hr[]" '+checked+' type="checkbox" value="'+hr_id+'" id="'+hr_id+'" class="filled-in hr-check-box chk-col-red"> <label for="'+hr_id+'">'+hr_name+'</label>');
+            }
+          }
+        }).fail(function(err) {
+          console.log(err);
+        });
+      });
+      $('.close-rec-panel').click(function(event) {
+        $('.right-sidebar2').animate({width: '0%'}, 500).hide();
+      });
+      $('#assigner-recruiter-btn').click(function(event) {
+        event.preventDefault();
+        $('.preloader').show();
+        var recruiter_id = [];
+        var hr_id = [];
+        var rec_id = $('#recruiter-assign-recruit-id').val();
+        $('.recruiters-check-box:checked').each(function(){
+          recruiter_id.push($(this).val());
+        });
+        $('.hr-check-box:checked').each(function(){
+          hr_id.push($(this).val());
+        });
+        var url = '/interviewee/asign-recruiter';
+        var params = {
+          recruit_id:rec_id,
+          recruiter_id:recruiter_id,
+          hr_id:hr_id
+        };
+        $.ajax( url, {
+        'data': JSON.stringify(params),
+        'type': 'POST',
+        'processData': false,
+        'contentType': 'application/json'
+        }).done(function() {
+          $('.right-sidebar2').css('width', '0').hide();
+          $('#recruiter-assign-recruit-id').val("");
+          swal("Recruiter Assigned Successfully!", "", "success");
+          updateTable();
+          $('.preloader').fadeOut();
+        }).fail(function(err) {
+          $('.right-sidebar2').css('width', '0').hide();
+          $('#recruiter-assign-recruit-id').val("");
+          swal("Error!", "Error Assigning recruiter. Please check if all the fields are filled. If problem persists, contact the tech team : techtteam@socialbeat.in", "error");
+          updateTable();
+        });
+      });
+
+      $('#schedule-interview-side-btn').click(function(event) {
+        event.preventDefault();
+        $(".right-sidebar").toggleClass("shw-rside");
+        swal({
+            title: "Schedule Interview?",
+            text: "Scheduling interview will send the candidate a Calendar Invite with an email !",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#06d79c",
+            confirmButtonText: "Yes, schedule it!",
+        }).then((value)=>{
+          if (value.value === true) {
+            var url = '/calendar-event';
+            var eventDate = $('#int-date').val();
+            var eventNamme = $('#event-title').val();
+            var eventLocation = $('#event-location').val();
+            var eventDescription = $('#event-desc').val();
+            var eventStartTime = $('#int-start-time').val();
+            var eventEndTime = $('#int-end-time').val();
+            var recruit_id = $('#schedule-recruit-id').val();
+            var recruit_email = $('#schedule-recruit-email').val();
+            if (eventStartTime == "") {
+              swal("Error!", "Please mention the interview starting time", "error");
+              return;
+            }
+            if (eventEndTime == "") {
+              swal("Error!", "Please mention the interview ending time", "error");
+              return;
+            }
+            if (!eventStartTime > eventEndTime) {
+              swal("Error!", "Please make sure that the Interview end time is greater than start time", "error");
+              return;
+            }
+            var startDateTime = eventDate+'T'+eventStartTime+':00+05:30';
+            var endDateTime = eventDate+'T'+eventEndTime+':00+05:30';
+            var params = {
+              date: eventDate,
+              startTime : eventStartTime,
+              endTime : eventEndTime,
+              eventNamme : eventNamme,
+              eventLocation : eventLocation,
+              eventDescription : eventDescription,
+              eventStartDateTime : startDateTime,
+              eventEndDateTime : endDateTime,
+              recruit_id : recruit_id,
+              recruit_email : recruit_email
+            };
+            $.ajax( url, {
+            'data': JSON.stringify(params),
+            'type': 'POST',
+            'processData': false,
+            'contentType': 'application/json'
+          }).done(function(data) {
+              $('.right-sidebar2').css('width', '0').hide();
+              $('#schedule-recruit-id').val("");
+              $('#schedule-recruit-email').val("");
+              $('#schedule-recruiter-id').val("");
+              swal("Interview Scheduled Successfully!", "", "success").then((value)=>{
+                $(".right-sidebar").toggleClass("shw-rside");
+              });
+            }).fail(function(err) {
+              $('#schedule-recruit-id').val("");
+              swal("Error!", "Error Scheduling. Please check if all the fields are filled. If problem persists, contact the tech team : techtteam@socialbeat.in", "error");
+            });
+          }
+        });
+      });
+
+      $('#schedule-panel-close-btn').click(function(event) {
+        updateTable();
+      });
+
+      $(document).on('click', '.cancel-interview-btn', function(event) {
+        event.preventDefault();
+        var id = $(this).attr('rel');
+        var email = $(this).attr('data-email');
+        swal({
+            title: "Cancel Interview?",
+            text: "System will send a cancellation email to the candidate.",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#06d79c",
+            confirmButtonText: "Yes, Cancel it!",
+        }).then((value)=>{
+          if (value.value === true) {
+            var url = '/calendar/delete-event';
+            params = {
+              c_id : id,
+              email : email
+            };
+            $.ajax( url, {
+            'data': JSON.stringify(params),
+            'type': 'POST',
+            'processData': false,
+            'contentType': 'application/json'
+            }).done(function() {
+              swal("Cancelled", "", "success");
+              window.location.reload();
+              }).fail(function(err) {
+              swal("Error!", "Error Cancelling Interview", "error");
+            });
+          }
+        });
+        updateTable();
+      });
+
+      $('#send-profile-email-btn').click(function(event) {
+        event.preventDefault();
+        var recruit_id = $('#recruiter-assign-recruit-id').val();
+        var recruiter_id = $('input[name=recruiter-radio-select]:checked').val();
+        var params = {
+          recruit_id,
+          recruiter_id
+        }
+        $.ajax( '/recruiter-send-recruit-profile', {
+        'type': 'POST',
+        'data': JSON.stringify(params),
+        'processData': false,
+        'contentType': 'application/json'
+        }).done(function(data) {
+          console.log(data);
+        }).fail(function(err) {
+          console.log(err);
+        });
+      });
+
+      $(document).on('click', '.button-reject', function(event) {
+        event.preventDefault();
+        var name = $(this).attr('data-name')
+        swal({
+            title: "Reject "+name+"?",
+            text: "System will send a reject email to the candidate.",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#06d79c",
+            confirmButtonText: "Yes, Reject!",
+        }).then((value)=>{
+          if (value.value === true) {
+            $('.loader__label').text("Please wait, Rejecting Interviewee");
+            $('.preloader').show();
+            var id = $(this).attr("rel");
+            var url = '/recruits/reject';
+            params = {
+              id:id
+            };
+            $.ajax({
+              'url': url,
+              'type': 'POST',
+              'data': JSON.stringify(params),
+              'processData': false,
+              'contentType': 'application/json'
+            })
+            .done(function(data) {
+              $('.preloader').hide();
+              swal('Rejected','','success');
+              setTimeout(function () {
+                window.location.reload();
+              }, 1500);
+            })
+            .fail(function() {
+              $('.preloader').hide();
+              swal('Error!','error rejecting the candidate','error').then(()=>{
+                window.location.reload();
+              });
+            })
+          }
+        });
+      });
+
+      function updateTable() {
+        $('#recruites-table').empty();
+        var url = '/interviewee/get-all';
+        $.ajax( url, {
+        'type': 'GET',
+        'processData': false,
+        'contentType': 'application/json'
+        }).done(function(data) {
+          for (var i = 0; i < data.recruites.length; i++) {
+            var action_button = '';
+            var app_no = data.recruites[i].application_no;
+            var name = data.recruites[i].name;
+            var email = data.recruites[i].email;
+            var phone = data.recruites[i].phone;
+            var team = data.recruites[i].team;
+            var resume = data.recruites[i].resume;
+            var id = data.recruites[i]._id;
+            var type = data.recruites[i].recruit_type;
+            var status = data.recruites[i].status;
+            var recruiters = data.recruites[i].recruiters;
+            var position = data.recruites[i].position;
+            var recruiter_names = [];
+            for (var j = 0; j < recruiters.length; j++) { recruiter_names.push(recruiters[j].name);}
+            recruiter_names = recruiter_names.join();
+            recruit_position = position.title;
+            var int_status = data.recruites[i].inetrview_status;
+            name = name.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})
+            team = team.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})
+            type = type.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})
+            if (int_status === undefined || int_status === "0") {
+            var interview_status = '<span style="margin:0 3px;" class="badge badge-warning ml-auto">Interview <i class="fas fa-times"></i></span>';
+            var int_button_text = "<i class='far fa-clock'></i> Schedule Interview";
+            var cancel_int_btn = '';
+            }else if (int_status === "1") {
+              var cal_id = data.recruites[i].calendar_id;
+              var interview_status = '<span style="margin:0 3px;" class="badge badge-success ml-auto">Interview <i class="fas fa-stopwatch"></i></span>';
+              var int_button_text = "<i class='fas fa-history'></i> Reschedule";
+              var cancel_int_btn = '<a data-email="'+email+'" rel="'+cal_id+'" class="dropdown-item cancel-interview-btn" href="javascript:void(0);"><i class="fas fa-calendar-times"></i> Cancel Interview</a>';
+            }else{
+              var interview_status = '';
+              var int_button_text = "<i class='far fa-clock'></i> Schedule Interview";
+              var cancel_int_btn = '';
+            }
+            var rec_act = 0;
+            if (recruiters === undefined || recruiters.length === 0) {
+              var recruiter_status = '<span style="margin:0 3px;" class="badge badge-warning ml-auto">Not Assigned</span>';
+              var recruiter_btn_txt = "<i class='fas fa-user-plus'></i> Assign Recruiter";
+              var recruiters = '';
+            }else if(recruiters){
+              var recruiter_status = recruiter_names;
+              var recruiter_btn_txt = "<i class='fas fa-user-plus'></i> Re-assign Recruiter";
+              rec_act = 1;
+            }else{
+              var recruiter_status = '<span style="margin:0 3px;" class="badge badge-warning ml-auto">Not Assigned</span>';
+              var recruiter_btn_txt = "<i class='fas fa-user-plus'></i> Assign Recruiter";
+              recruiters = '';
+            }
+            if (status == 'new') {
+              var badgecolor = 'badge-info';
+            }else if (status == 'processing') {
+              var badgecolor = 'badge-success';
+            }else if (status == 'in-active') {
+              var badgecolor = 'badge-danger';
+            }else if(status == 'rejected'){
+              var badgecolor = 'badge-danger';
+              var action_button = 'disabled';
+            }
+            status = status.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})
+            var tablerow = '<tr><td class="p-t-20">'+app_no+'</td><td class="p-t-20">'+name+'<br>'+data.recruites[i].current_company+'</td><td class="p-t-20">'+email+'</td><td class="p-t-20">'+phone+'</td><td class="p-t-20">'+team+' - '+recruit_position+'</td><td class="p-t-20 text-center">'+recruiter_status+'</td><td class="p-t-20"><span style="margin:0 3px 0 0;" class="badge '+badgecolor+' ml-auto">'+status+'</span>'+interview_status+'</td><td><div class="btn-group"> <button '+action_button+' type="button" class="btn btn-sm btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Action </button><div class="dropdown-menu"> <a rel="'+id+'" data-career-id="'+data.recruites[i].position._id+'" class="dropdown-item assign-recruiter-btn" href="javascript:void(0);">'+recruiter_btn_txt+'</a> <a data-email="'+email+'" rel="'+id+'" data-recruiter-stat="'+rec_act+'" class="dropdown-item schedule-interview-btn" href="javascript:void(0);">'+int_button_text+'</a> '+cancel_int_btn+'<a target="_blank" rel="'+id+'" class="dropdown-item view-resume-btn" href="/recruits/view-resume/'+id+'"><i class="far fa-file-alt"></i> View Resume</a><a rel="'+id+'" class="dropdown-item" href="/interviewee/view-profile/'+id+'"><i class="fas fa-eye"></i> View Profile</a><a rel="'+id+'" class="dropdown-item" href="/interviewee/feedback/'+id+'"><i class="far fa-comment-alt"></i> Feedback Form</a><a rel="'+id+'" class="dropdown-item button-approve" href="javascript:void(0);"><i class="fas fa-check"></i> Approve</a><a data-name="'+name+'" rel="'+id+'" class="dropdown-item button-reject" href="javascript:void(0);"><i class="far fa-times-circle"></i> Reject</a></div></div></td></tr>';
+            $('#recruites-table').append(tablerow);
+          }
+        }).fail(function(err) {
+          console.log(err);
+        });
+      }
+      var idleTime = 0;
+      $(document).ready(function () {
+        var idleInterval = setInterval(timerIncrement, 150000);
+        $(this).mousemove(function (e) {
+            idleTime = 0;
+        });
+        $(this).keypress(function (e) {
+            idleTime = 0;
+        });
+      });
+      function timerIncrement() {
+        idleTime = idleTime + 1;
+        if (idleTime > 4) {
+          updateTable();
+        }
+      }
+    </script>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
+    <title>InterviewPro - Add Team</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+    <!-- page CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="assets/app-css/style.css" rel="stylesheet">
+    <!-- You can change the theme colors from here -->
+    <!-- <link href="css/colors/default-dark.css" id="theme" rel="stylesheet"> -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="fix-header card-no-border fix-sidebar">
+  <div class="preloader">
+      <div class="loader">
+          <div class="loader__figure"></div>
+          <p class="loader__label">Please wait, Creating Team</p>
+      </div>
+  </div>
+    <div id="main-wrapper">
+      <header class="topbar">
+          <nav class="navbar top-navbar navbar-expand-md navbar-light">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/login">
+                    <b><img src="assets/images/logo-icon.png" alt="homepage" class="dark-logo" /></b>
+                    <span><h4 class="font-weight-bold d-inline-block text-danger">INTERVIEW PRO</h4></span>
+                </a>
+            </div>
+              <div class="navbar-collapse">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"> <a class="nav-link nav-toggler hidden-md-up waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                    <li class="nav-item"> <a class="nav-link sidebartoggler hidden-sm-down waves-effect waves-dark" href="javascript:void(0)"><i class="ti-menu"></i></a> </li>
+                  </ul>
+              </div>
+          </nav>
+      </header>
+        <aside class="left-sidebar">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                  <ul id="sidebarnav">
+                      <li class="user-profile">
+                          <a class="has-arrow waves-effect waves-dark" href="javascript:void()" aria-expanded="false"><i class="mdi mdi-emoticon-cool"></i><span class="hide-menu" id="user-name"></span></a>
+                          <ul aria-expanded="false" class="collapse">
+                              <li><a href="javascript:void()">Account Setting</a></li>
+                              <li><a href="/logout">Logout</a></li>
+                          </ul>
+                      </li>
+                      <li class="nav-devider"></li>
+                      <li> <a class="waves-effect waves-dark" href="/dashboard" aria-expanded="false"><i class="mdi mdi-apps"></i><span class="hide-menu">Dashboard</span></a></li>
+                      <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-circle"></i><span class="hide-menu">Team</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                          <li><a href="/team/add-recruiter">Add Interviewer</a></li>
+                          <li><a href="/team/view-recruiters">View Interviewers</a></li>
+                        </ul>
+                      </li>
+                      <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Interviewee</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                          <li><a href="/interviewee/add-new">Add New</a></li>
+                          <li><a href="/interviewee/view">View All</a></li>
+                          <li><a href="/interviewee/data-sheet">Data Sheet</a></li>
+                        </ul>
+                      </li>
+                      <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="fas fa-briefcase"></i><span class="hide-menu">Careers</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                          <li><a href="/careers/add-new">Add New</a></li>
+                          <li><a href="/careers/manage-careers">Manage</a></li>
+                          <li><a href="/team/add-team">Add Team</a></li>
+                        </ul>
+                      </li>
+                  </ul>
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+      
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Bread crumb and right sidebar toggle -->
+                <!-- ============================================================== -->
+                <div class="row page-titles">
+                    <div class="col-md-5 align-self-center">
+                    </div>
+                    <div class="col-md-7 align-self-center">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                            <li class="breadcrumb-item">Team</li>
+                            <li class="breadcrumb-item active">Add Team</li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <h4 class="card-title">Add Team</h4>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-6">
+                                  <div class="form-group">
+                                    <label for="team-name">Enter Team Name</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="team-name-addon">
+                                                <i class="ti-user"></i>
+                                            </span>
+                                        </div>
+                                        <input type="email" class="form-control" id="team-name" placeholder="Name">
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-12 col-md-6 col-lg-6">
+                                  <button type="submit" class="btn btn-success waves-effect waves-light m-r-10 m-t-30" id="team-submit">Submit</button>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer"> © 2019 Interview Pro by Social Beat </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="assets/plugins/bootstrap/js/popper.min.js"></script>
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="js/perfect-scrollbar.jquery.min.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="js/sidebarmenu.js"></script>
+    <!--stickey kit -->
+    <script src="assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+    <!--Custom JavaScript -->
+    <script src="js/custom.min.js"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugins -->
+    <!-- ============================================================== -->
+    <script src="assets/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="assets/plugins/dff/dff.js" type="text/javascript"></script>
+    <script src="assets/app-js/custom.js" charset="utf-8"></script>
+    <script>
+    $('.preloader').hide();
+    $('#team-submit').click(function(event) {
+      event.preventDefault();
+      $('.preloader').show();
+      var team_name = $('#team-name').val();
+      var params = {
+        name:team_name
+      };
+      var url = '/create-team';
+      $.ajax( url, {
+      'data': JSON.stringify(params),
+      'type': 'POST',
+      'processData': false,
+      'contentType': 'application/json'
+      }).done(function(data) {
+        $('.preloader').fadeOut();
+        $('#team-name').val("");
+        swal("Team Added", "", "success");
+      }).fail(function(err) {
+        $('.preloader').fadeOut();
+        $('#team-name').val("");
+        swal("Error!", "Error adding Team. Please check if all the fields are filled. If problem persists, contact the tech team : techtteam@socialbeat.in", "error");
+      });
+    });
+    </script>
+</body>
+
+</html>
