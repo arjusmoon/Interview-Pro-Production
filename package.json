@@ -26,7 +26,7 @@
     "mongoose-unique-validator": "^2.0.3",
     "morgan": "^1.9.1",
     "multer": "^1.4.1",
-    "nodemailer": "^6.2.1",
+    "nodemailer": "^6.4.16",
     "querystring": "^0.2.0",
     "resume-parser": "^1.1.0",
     "resume-parser-object": "^1.1.0",
